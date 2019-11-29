@@ -36,7 +36,6 @@
             this.inputLatvanyossagNeve = new System.Windows.Forms.TextBox();
             this.inputLatvanyossagAra = new System.Windows.Forms.NumericUpDown();
             this.latvanyossagKuldes = new System.Windows.Forms.Button();
-            this.listBoxVarosok = new System.Windows.Forms.ListBox();
             this.latvanyossagNev = new System.Windows.Forms.Label();
             this.latvanyossagLeiras = new System.Windows.Forms.Label();
             this.latvanyossagAr = new System.Windows.Forms.Label();
@@ -46,6 +45,8 @@
             this.varosTorles = new System.Windows.Forms.Button();
             this.kivalaszthatoVarosTorlese = new System.Windows.Forms.Button();
             this.modositas = new System.Windows.Forms.Button();
+            this.varosLatvanyossaga = new System.Windows.Forms.ListBox();
+            this.comboBoxValaszthatoVarosok = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.inputLakossagSzam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputLatvanyossagAra)).BeginInit();
             this.SuspendLayout();
@@ -126,14 +127,6 @@
             this.latvanyossagKuldes.UseVisualStyleBackColor = true;
             this.latvanyossagKuldes.Click += new System.EventHandler(this.latvanyossagKuldes_Click);
             // 
-            // listBoxVarosok
-            // 
-            this.listBoxVarosok.FormattingEnabled = true;
-            this.listBoxVarosok.Location = new System.Drawing.Point(422, 88);
-            this.listBoxVarosok.Name = "listBoxVarosok";
-            this.listBoxVarosok.Size = new System.Drawing.Size(120, 95);
-            this.listBoxVarosok.TabIndex = 8;
-            // 
             // latvanyossagNev
             // 
             this.latvanyossagNev.AutoSize = true;
@@ -207,7 +200,7 @@
             // 
             // modositas
             // 
-            this.modositas.Location = new System.Drawing.Point(154, 59);
+            this.modositas.Location = new System.Drawing.Point(254, 382);
             this.modositas.Name = "modositas";
             this.modositas.Size = new System.Drawing.Size(82, 23);
             this.modositas.TabIndex = 17;
@@ -215,11 +208,29 @@
             this.modositas.UseVisualStyleBackColor = true;
             this.modositas.Click += new System.EventHandler(this.modositas_Click);
             // 
+            // varosLatvanyossaga
+            // 
+            this.varosLatvanyossaga.FormattingEnabled = true;
+            this.varosLatvanyossaga.Location = new System.Drawing.Point(13, 219);
+            this.varosLatvanyossaga.Name = "varosLatvanyossaga";
+            this.varosLatvanyossaga.Size = new System.Drawing.Size(223, 186);
+            this.varosLatvanyossaga.TabIndex = 18;
+            // 
+            // comboBoxValaszthatoVarosok
+            // 
+            this.comboBoxValaszthatoVarosok.FormattingEnabled = true;
+            this.comboBoxValaszthatoVarosok.Location = new System.Drawing.Point(421, 88);
+            this.comboBoxValaszthatoVarosok.Name = "comboBoxValaszthatoVarosok";
+            this.comboBoxValaszthatoVarosok.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxValaszthatoVarosok.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 238);
+            this.ClientSize = new System.Drawing.Size(580, 456);
+            this.Controls.Add(this.comboBoxValaszthatoVarosok);
+            this.Controls.Add(this.varosLatvanyossaga);
             this.Controls.Add(this.modositas);
             this.Controls.Add(this.kivalaszthatoVarosTorlese);
             this.Controls.Add(this.varosTorles);
@@ -229,7 +240,6 @@
             this.Controls.Add(this.latvanyossagAr);
             this.Controls.Add(this.latvanyossagLeiras);
             this.Controls.Add(this.latvanyossagNev);
-            this.Controls.Add(this.listBoxVarosok);
             this.Controls.Add(this.latvanyossagKuldes);
             this.Controls.Add(this.inputLatvanyossagAra);
             this.Controls.Add(this.inputLatvanyossagNeve);
@@ -257,7 +267,6 @@
         private System.Windows.Forms.TextBox inputLatvanyossagNeve;
         private System.Windows.Forms.NumericUpDown inputLatvanyossagAra;
         private System.Windows.Forms.Button latvanyossagKuldes;
-        private System.Windows.Forms.ListBox listBoxVarosok;
         private System.Windows.Forms.Label latvanyossagNev;
         private System.Windows.Forms.Label latvanyossagLeiras;
         private System.Windows.Forms.Label latvanyossagAr;
@@ -267,6 +276,8 @@
         private System.Windows.Forms.Button varosTorles;
         private System.Windows.Forms.Button kivalaszthatoVarosTorlese;
         private System.Windows.Forms.Button modositas;
+        private System.Windows.Forms.ListBox varosLatvanyossaga;
+        private System.Windows.Forms.ComboBox comboBoxValaszthatoVarosok;
     }
 }
 

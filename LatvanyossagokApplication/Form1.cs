@@ -38,7 +38,7 @@ namespace LatvanyossagokApplication
                     var lakossag = reader.GetInt32("lakossag");
                     var varoska = new varosok(id, nev, lakossag);
                     listBoxfelvettVarosok.Items.Add(varoska);
-                    listBoxVarosok.Items.Add(varoska);
+                    comboBoxValaszthatoVarosok.Items.Add(varoska);
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace LatvanyossagokApplication
                 return;
             }
 
-            listBoxVarosok.Items.Clear();
+            comboBoxValaszthatoVarosok.Items.Clear();
 
            
 
@@ -68,33 +68,16 @@ namespace LatvanyossagokApplication
 
         private void modositas_Click(object sender, EventArgs e)
         {
-            var renewcmd = conn.CreateCommand();
-            renewcmd.CommandText = "SELECT id, nev, lakossag FROM varosok where id = @id";
-            var modositandoVaros = (varosok)listBoxVarosok.SelectedItem;
-            renewcmd.Parameters.AddWithValue("@id", modositandoVaros.Id);
-            inputVarosNev.Show();
-            inputLakossagSzam.Show();
+            // Create a new instance of the Form2 class
+            Form2 settingsForm = new Form2();
 
-
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT id, nev, lakossag FROM varosok ORDER BY nev";
-            using (var reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    var id = reader.GetInt32("id");
-                    var nev = reader.GetString("nev");
-                    var lakossag = reader.GetInt32("lakossag");
-                    var varoska = new varosok(id, nev, lakossag);
-                    listBoxfelvettVarosok.Items.Add(varoska);
-                    listBoxVarosok.Items.Add(varoska);
-                }
-            }
+            // Show the settings form
+            settingsForm.Show();
         }
 
         void kivalaszthatoVarosokListazasa()
         {
-            listBoxVarosok.Items.Clear();
+            comboBoxValaszthatoVarosok.Items.Clear();
 
             var cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT id, nev, leiras, ar, varos_id FROM latvanyossagok ORDER BY nev";
@@ -115,7 +98,7 @@ namespace LatvanyossagokApplication
 
         private void kivalaszthatoVarosTorlese_Click(object sender, EventArgs e)
         {
-            if (listBoxVarosok.SelectedIndex == -1)
+            if (comboBoxValaszthatoVarosok.SelectedIndex == -1)
             {
                 MessageBox.Show("Nincs város kiválasztva!");
                 return;
@@ -123,7 +106,7 @@ namespace LatvanyossagokApplication
             var cmd = conn.CreateCommand();
             cmd.CommandText = "DELETE FROM latvanyossagok where id = @id";
 
-            var latvanyossag = (latvanyossagok)listBoxVarosok.SelectedItem;
+            var latvanyossag = (latvanyossagok)comboBoxValaszthatoVarosok.SelectedItem;
             cmd.Parameters.AddWithValue("@id", latvanyossag.Id);
 
             cmd.ExecuteNonQuery();
@@ -149,7 +132,7 @@ namespace LatvanyossagokApplication
 
         private void latvanyossagKuldes_Click(object sender, EventArgs e)
         {
-            if (latvanyossagNev.Equals("") || latvanyossagLeiras.Equals("") || latvanyossagAr.Equals(0) || listBoxVarosok.SelectedIndex == -1)
+            if (latvanyossagNev.Equals("") || latvanyossagLeiras.Equals("") || latvanyossagAr.Equals(0) || comboBoxValaszthatoVarosok.SelectedIndex == -1)
             {
                 MessageBox.Show("Egy mező nincs kitöltve vagy a város nincs kiválasztva!");
                 return;
@@ -159,7 +142,7 @@ namespace LatvanyossagokApplication
             cmd.Parameters.AddWithValue("@nev", latvanyossagNev.Text);
             cmd.Parameters.AddWithValue("@leiras", latvanyossagLeiras.Text);
             cmd.Parameters.AddWithValue("@ar", latvanyossagAr.Text);
-            cmd.Parameters.AddWithValue("@varos_id", listBoxVarosok.Text);
+            cmd.Parameters.AddWithValue("@varos_id", comboBoxValaszthatoVarosok.Text);
 
             int erintettSorokSzama = cmd.ExecuteNonQuery();
             kivalaszthatoVarosokListazasa();
